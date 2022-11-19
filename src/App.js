@@ -6,7 +6,7 @@ import '@aws-amplify/ui-react/styles.css';
 import awsconfig from './aws-exports';
 Amplify.configure(awsconfig);
 
-function App({ signIn, user}) {
+function App({ signOut, user}) {
   return (
     <div className="App">
       <header className="App-header">
@@ -23,10 +23,10 @@ function App({ signIn, user}) {
           Learn React
         </a>
         <h1>hello {user.username}</h1>
-        <button onClick={signIn}>Sign in</button>
+        <button onClick={signOut}>Sign in</button>
       </header>
     </div>
   );
 }
 
-export default App;
+export default withAuthenticator(App);
