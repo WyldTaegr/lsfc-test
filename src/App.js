@@ -1,7 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+import { Amplify, Auth } from 'aws-amplify';
+import { withAuthenticator } from '@aws-amplify/ui-react'
+import '@aws-amplify/ui-react/styles.css';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 
-function App() {
+function App({ signIn, user}) {
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +22,8 @@ function App() {
         >
           Learn React
         </a>
+        <h1>hello {user.username}</h1>
+        <button onClick={signIn}>Sign in</button>
       </header>
     </div>
   );
